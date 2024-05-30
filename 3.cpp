@@ -28,6 +28,22 @@ int pop(queue*& h, queue*& t) {
 	return i;
 }
 
+
+int findMax(queue * h)
+{
+    int max = 0;
+    queue* temp = h;
+    while (temp) 
+    {
+        if (temp->inf > max)
+        {
+            max = temp->inf;
+        }
+        temp = temp->next;
+    }
+    return max; 
+}
+
 int main() {
 	queue* h = NULL, * t = NULL;
 	int n, x;
