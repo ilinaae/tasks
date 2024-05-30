@@ -22,7 +22,34 @@ char pop(stack*& h) {
     return letter; 
 }
 
+bool isConsonant(char letter) {
+    letter = tolower(letter);
+    return isalpha(letter) && strchr("bcdfghjklmnpqrstvwxyz", letter) != nullptr;
+}
 
+void insert_znak(stack*& h) {
+    stack* result = NULL;
+    stack* tempStack = NULL;
+
+    while (h) {
+        push(result, pop(h));
+    }
+    bool consonant_f = false;
+    while (result) {
+        char currentLetter = pop(result);
+        if (!consonant_f && isConsonant(currentLetter)) {
+            push(tempStack, currentLetter);
+            push(tempStack, '!');
+            consonant_f = true;
+        }
+        else {
+            push(tempStack, currentLetter);
+        }
+    }
+    while (tempStack) {
+        push(h, pop(tempStack));
+    }
+}
 
 int main() {
     stack* head = nullptr;
@@ -38,7 +65,7 @@ int main() {
         push(head, input);
         n--;
     }
-
+    insert_znack(head);
     cout << " stack: ";
     stack* temp = head;
     while (temp) {
