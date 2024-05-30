@@ -44,6 +44,13 @@ int findMax(queue * h)
     return max; 
 }
 
+void result(queue*& h, queue*& t) {
+    int max = findMax(h);
+    while (h && t && h->inf != max) {
+        int x = pop(h, t); 
+        push(h, t, x);
+    }
+}
 int main() {
 	queue* h = NULL, * t = NULL;
 	int n, x;
@@ -56,8 +63,7 @@ int main() {
 		cin >> x;
 		push(h, t, x);
 	}
-
-
+	result(h, t);
 	cout << "queue:\n";
 	while (h) {
 		cout << pop(h, t) << " ";
