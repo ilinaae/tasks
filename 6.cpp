@@ -27,6 +27,12 @@ void create(tree*& tr, int n) {
         create(tr->right, nr);
     }
 }
+void preorder(tree* tr) { 
+    if (tr) {
+        cout << tr->inf << " ";
+        preorder(tr->left);
+        preorder(tr->right);
+    }
 
 int main() {
     setlocale(LC_ALL, "Ru");
@@ -34,6 +40,7 @@ int main() {
     int n, x;
     in >> n;
     create(tr, n);
+    preorder(tr);
     cout << endl;
     return 0;
 }
