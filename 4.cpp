@@ -50,7 +50,19 @@ void inorder(tree * tr) {
             cout << tr->inf << " ";
             inorder(tr->right);
         }
+}
+int height(tree* tr) {
+    if (!tr)
+        return -1;
+    else {
+        int left_height = height(tr->left);
+        int right_height = height(tr->right);
+        if (left_height >= right_height)
+            return left_height + 1;
+        else
+            return right_height + 1;
     }
+}
 int main() {
         setlocale(LC_ALL, "Ru");
         int n, x;
@@ -62,7 +74,7 @@ int main() {
             insert(tr, x);
         }
         inorder(tr); cout << endl;
-        cout << "Высота дерева: "  << endl;
+        cout << "Высота дерева: "  << height(tr) << endl;
         cout << endl;
         return 0;
 }
