@@ -131,7 +131,13 @@ void Delete(tree*& tr, tree* v) {
         delete succ;
     }
 }
-
+void inorder(tree* tr) { 
+    if (tr) {
+        inorder(tr->left);
+        cout << tr->inf << " ";
+        inorder(tr->right);
+    }
+}
 int main() {
     int n, x;
     cout << "n="; cin >> n;
