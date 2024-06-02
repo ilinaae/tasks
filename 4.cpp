@@ -44,7 +44,13 @@ void insert(tree*& tr, int x) {//вставка
         }
     }
 }
-
+void inorder(tree * tr) { 
+        if (tr) {
+            inorder(tr->left);
+            cout << tr->inf << " ";
+            inorder(tr->right);
+        }
+    }
 int main() {
         setlocale(LC_ALL, "Ru");
         int n, x;
@@ -55,7 +61,7 @@ int main() {
             cin >> x;
             insert(tr, x);
         }
-        cout << endl;
+        inorder(tr); cout << endl;
         cout << "Высота дерева: "  << endl;
         cout << endl;
         return 0;
