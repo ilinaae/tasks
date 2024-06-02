@@ -138,6 +138,13 @@ void inorder(tree* tr) {
         inorder(tr->right);
     }
 }
+void del_even(tree* tr) {
+    if (tr) {
+        del_even(tr->left);
+        del_even(tr->right);
+        if (tr->inf % 2 == 0) Delete(tr, tr);
+    }
+}
 int main() {
     int n, x;
     cout << "n="; cin >> n;
@@ -147,7 +154,10 @@ int main() {
         cin >> x;
         insert(tr, x);
     }
+    inorder(tr);
     cout << endl;
+    del_even(tr);
+    inorder(tr);
     cout << endl;
     return 0;
 }
